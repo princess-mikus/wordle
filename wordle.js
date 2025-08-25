@@ -83,6 +83,7 @@ async function checkWord(word) {
 
 	if (correct === true) {
 		alert("You won!!!");
+		// TODO: do a win indicator!!!
 	} else {
 		updateCurrent();
 	}
