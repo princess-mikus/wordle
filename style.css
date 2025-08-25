@@ -1,0 +1,94 @@
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    --letter-green:   #6ca965;
+    --letter-yellow:  #c8b653;
+    --letter-gray:    #787c7f;
+}
+
+.body {
+    background-color: #f8f8f8;
+}
+
+a {
+    color: green;
+    text-decoration: none;
+}
+
+a:visited {
+    color: darkgreen;
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.nav-bar {
+    display: flex;
+    flex-direction: row;
+    margin: 0px;
+    align-items: center;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+    border-bottom: 2px dotted black;
+}
+
+.nav-bar-item {
+    display: inline;
+    border: black solid 1px;
+    margin: 1px;
+    font-weight: bold;
+    background-color: teal;
+    font-size: xx-large;
+    text-transform: uppercase;
+    padding-left: 6px;
+    padding-right: 6px;
+}
+
+.word-div {
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    justify-items: center;
+    margin-top: 1px;
+}
+
+.space {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.letter {
+    border: lightgray solid 1px;
+    aspect-ratio: 1 / 1;
+    width: 80px;
+    text-align: center;
+}
+
+.letter.correct {
+    background-color: #6ca965;
+    color: white;
+}
+
+.letter.wrong-position {
+    background-color: #c8b653;
+    color: white;
+}
+
+.letter.wrong {
+    background-color: #787c7f;
+    color: white;
+}
+
+.letter.title {
+    border: black solid 2px;
+    aspect-ratio: 1 / 1;
+    width: 36px;
+    font-size: 24px;
+    margin-left: 2px;
+}
