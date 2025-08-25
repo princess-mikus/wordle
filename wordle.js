@@ -6,6 +6,8 @@ async function getAnswer() {
 	const promise = await fetch("https://words.dev-apis.com/word-of-the-day");
 	const jsonResponse = await promise.json();
 	ANSWER = jsonResponse.word;
+
+	// TODO check for API errors!
 }
 
 function isLetter(key) {
@@ -21,6 +23,9 @@ async function getCorrectWord(word) {
 			"word": word
 		})
 	});
+
+	// TODO check for API errors!
+
 	return (promise.json());
 }
 
@@ -28,6 +33,9 @@ function checkIfMisplaced(letter) {
 	const answerArray = Array.from(ANSWER);
 	if (!answerArray.find((element) => element === letter))
 		return (false);
+
+	// TODO check if letter is already right
+
 	return (true);
 }
 
@@ -49,6 +57,8 @@ async function checkWord(word) {
 	await getCorrectWord(word).then(function (objResponse) {
 		validWord = objResponse.validWord;
 	});
+
+	// TODO check for API errors!
 
 	let currentInput = CURRENT.children[0];
 	if (!validWord) {
@@ -97,9 +107,13 @@ function handleInput(event) {
 	}
 }
 
-getAnswer();
-document.querySelector("body").addEventListener("keydown", handleInput);
+async function main() {
+	await getAnswer();
 
-document.querySelectorAll(".letter").forEach((letter) => {
-		letter.addEventListener("animationend", (event) => event.target.classList.remove("rumble", "wrong-word"));
-	});
+	document.querySelector("body").addEventListener("keydown", handleInput);
+	document.querySelectorAll(".letter").forEach((letter) => {
+			letter.addEventListener("animationend", (event) => event.target.classList.remove("rumble", "wrong-word"));
+		});
+}
+
+main();
