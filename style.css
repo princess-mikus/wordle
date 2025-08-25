@@ -10,6 +10,7 @@
 
 .body {
     background-color: #f8f8f8;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 a {
@@ -25,28 +26,15 @@ a:visited {
     display: flex;
     flex-direction: row;
     align-items: center;
+    margin-bottom: 30px;
+    padding-bottom: 10px;
+    border-bottom: 0.5px solid black;
 }
 
-.nav-bar {
+.game {
     display: flex;
-    flex-direction: row;
-    margin: 0px;
-    align-items: center;
-    padding-bottom: 5px;
-    margin-bottom: 10px;
-    border-bottom: 2px dotted black;
-}
-
-.nav-bar-item {
-    display: inline;
-    border: black solid 1px;
-    margin: 1px;
-    font-weight: bold;
-    background-color: teal;
-    font-size: xx-large;
-    text-transform: uppercase;
-    padding-left: 6px;
-    padding-right: 6px;
+    flex-direction: column;
+    gap: 20px;
 }
 
 .word-div {
@@ -56,6 +44,13 @@ a:visited {
     justify-content: center;
     justify-items: center;
     margin-top: 1px;
+    gap: 5px;
+}
+
+.word {
+    display: none;
+    height: 0;
+    width: 0;
 }
 
 .space {
@@ -68,6 +63,40 @@ a:visited {
     aspect-ratio: 1 / 1;
     width: 80px;
     text-align: center;
+    font-weight: bold;
+    font-size: 36px;
+    text-transform: uppercase;
+}
+
+@keyframes wrong-word {
+    5% {
+        border-color: crimson;
+    }
+    100% {
+        border-color: lightgray;
+    }
+}
+
+@keyframes flip {
+    100% {transform: rotate(360deg);}
+}
+
+@keyframes rumble {
+    0% {translate: 5px;}
+    50% {translate: -5px;}
+    100% {translate: 0px;}
+}
+
+.letter.wrong-word {
+    animation: wrong-word 1s;
+}
+
+.letter.rumble {
+    animation: rumble 0.2s;
+}
+
+.letter.flip {
+    animation: flip 1s;
 }
 
 .letter.correct {
@@ -75,7 +104,7 @@ a:visited {
     color: white;
 }
 
-.letter.wrong-position {
+.letter.misplaced {
     background-color: #c8b653;
     color: white;
 }
