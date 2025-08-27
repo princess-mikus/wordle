@@ -35,6 +35,8 @@ a:visited {
     display: flex;
     flex-direction: column;
     gap: 20px;
+    height: 70vh;
+    margin: auto;
 }
 
 .word-div {
@@ -122,4 +124,47 @@ a:visited {
     width: 36px;
     font-size: 24px;
     margin-left: 2px;
+}
+
+.footer {
+    display: flex;
+    flex-direction: column;
+    border-top: 0.5px solid black;
+    height: 180px;
+    margin: auto;
+    width: 98%;
+    padding: 10px 5px;
+}
+
+.text {
+    display: inline-block;
+    margin: 0;
+}
+
+.image {
+    max-width: 50px;
+    aspect-ratio: 1 / 1;
+    fill: white;
+    margin: 0px 10px;
+}
+
+.footer a {
+    width: fit-content;
+    height: fit-content;
+}
+
+.link-button {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: #0e1111;
+    color: ivory;
+    width: fit-content;
+    padding: 10px 0;
+    border-radius: 20px;
+}
+
+.disclaimer span {
+    font-size: 9px;
 }
