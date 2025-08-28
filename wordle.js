@@ -1,6 +1,7 @@
 const PARENT = document.querySelector(".game");
 let CURRENT = document.querySelector(".current");
 let ANSWER = "";
+let PREV = [];
 
 async function getAnswer() {
 	const promise = await fetch("https://words.dev-apis.com/word-of-the-day");
@@ -54,15 +55,22 @@ function updateCurrent() {
 
 async function checkWord(word) {
 	let validWord = false;
+	let currentInput = CURRENT.children[0];
+
+	if (PREV.find((element) => element === word)) {
+		Array.from(CURRENT.children).forEach((letter) => letter.classList.add("wrong-word"));
+		currentInput.disabled = false;
+		return;	
+	}
+
 	await getCorrectWord(word).then(function (objResponse) {
 		validWord = objResponse.validWord;
 	});
 
 	// TODO check for API errors!
 
-	let currentInput = CURRENT.children[0];
 	if (!validWord) {
-		Array.from(CURRENT.children).forEach((letter) => letter.classList.add("wrong-word"))
+		Array.from(CURRENT.children).forEach((letter) => letter.classList.add("wrong-word"));
 		currentInput.disabled = false;
 		return;
 	}
@@ -85,6 +93,7 @@ async function checkWord(word) {
 		alert("You won!!!");
 		// TODO: do a win indicator!!!
 	} else {
+		PREV.push(word);
 		updateCurrent();
 	}
 }
@@ -101,8 +110,10 @@ function handleInput(event) {
 		CURRENT.children[currentInput.value.length].value = event.key;
 		CURRENT.children[currentInput.value.length].classList.add("rumble");
 	} else if (event.key == "Enter") {
-		if (currentInput.value.length != 5)
+		if (currentInput.value.length != 5) {
+			Array.from(CURRENT.children).forEach((letter) => letter.classList.add("wrong-word"));
 			return;
+		}
 		currentInput.disabled = true;
 		checkWord(currentInput.value);
 	}

@@ -5,11 +5,24 @@
 :root {
     --letter-green:   #6ca965;
     --letter-yellow:  #c8b653;
-    --letter-gray:    #787c7f;
+    --letter-gray:    light-dark(#787c7f, #3a3a3c);
+}
+
+html {
+    color-scheme: light dark;
+}
+
+html:has(#mode-switcher #light:checked) {
+    color-scheme: light;
+}
+
+html:has(#mode-switcher #dark:checked) {
+    color-scheme: dark;
 }
 
 .body {
-    background-color: #f8f8f8;
+    /*background-color: #f8f8f8;
+    */
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
@@ -29,6 +42,28 @@ a:visited {
     margin-bottom: 30px;
     padding-bottom: 10px;
     border-bottom: 0.5px solid black;
+}
+
+#mode-switcher {
+    display: none;
+}
+
+.dark-icon {
+    display: none;
+}
+
+.switch-modes {
+    width: 64px;
+    height: 64px;
+	background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+    justify-self: right;
+    margin-left: 70vw;
 }
 
 .game {
@@ -76,10 +111,10 @@ a:visited {
 
 @keyframes wrong-word {
     5% {
-        border-color: crimson;
+        border: 2px solid crimson;
     }
     100% {
-        border-color: lightgray;
+        border: 1px solid lightgray;
     }
 }
 
@@ -91,6 +126,10 @@ a:visited {
     0% {translate: 5px;}
     50% {translate: -5px;}
     100% {translate: 0px;}
+}
+
+.letter {
+    color: light-dark(white, white);
 }
 
 .letter.wrong-word {
@@ -106,22 +145,19 @@ a:visited {
 }
 
 .letter.correct {
-    background-color: #6ca965;
-    color: white;
+    background-color: var(--letter-green);
 }
 
 .letter.misplaced {
-    background-color: #c8b653;
-    color: white;
+    background-color: var(--letter-yellow);
 }
 
 .letter.wrong {
-    background-color: #787c7f;
-    color: white;
+    background-color: var(--letter-gray);
 }
 
 .letter.title {
-    border: black solid 2px;
+    border: 2px solid (light-dark(black, #d3d3d3));
     aspect-ratio: 1 / 1;
     width: 36px;
     font-size: 24px;
