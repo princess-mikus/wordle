@@ -147,6 +147,23 @@ function switchMode() {
 	}
 }
 
+function handleVirtualInput(ths) {
+	let	key = ths.target.innerText;
+
+	if (key === "↵") {
+		key = "Enter";
+	} else if (key === "⌫") {
+		key = "Backspace";
+	}
+
+	const options = {
+		key: key,
+		code: Number(key)
+	}
+	let event = new KeyboardEvent("keydown", options);
+	handleInput(event);
+}
+
 async function main() {
 	getMode();
 	document.querySelector(".switch-modes").addEventListener("click", switchMode);
@@ -154,9 +171,13 @@ async function main() {
 	await getAnswer();
 
 	document.querySelector("body").addEventListener("keydown", handleInput);
-	document.querySelectorAll(".letter").forEach((letter) => {
+	document.querySelectorAll("input.letter").forEach((letter) => {
 			letter.addEventListener("animationend", (event) => event.target.classList.remove("rumble", "wrong-word"));
 		});
+	document.querySelectorAll("button.letter").forEach((button) => {
+		button.addEventListener("touch", handleVirtualInput);
+		button.addEventListener("click", handleVirtualInput);
+	});
 }
 
 main();

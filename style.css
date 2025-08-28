@@ -164,6 +164,11 @@ a:visited {
     margin-left: 2px;
 }
 
+
+.virtual-keyboard {
+    display: none;
+}
+
 .footer {
     display: flex;
     flex-direction: column;
@@ -212,6 +217,10 @@ a:visited {
     display: none;
 }
 
+.invisible {
+    visibility: hidden;
+}
+
 @media(max-width:800px) {
     .link-button {
         display: none;
@@ -223,7 +232,41 @@ a:visited {
 
     .game {
         gap: 5px;
-        min-height: 65vh;
+        min-height: 50vh;
+        margin: auto;
+        width: 100%;
+    }
+
+    .virtual-keyboard {
+        display: grid;
+        grid-auto-flow: row wrap;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        gap: 5px;
+        row-gap: 10px;
+        padding: 10px 30px;
+        justify-items: center;
+        justify-content: center;
+        width: 80%;
+        margin: auto;
+    }
+
+    .virtual-keyboard-row {
+        display: flex;
+        gap: 10px;
+    }
+
+    .virtual-keyboard .letter {
+        width: 40px;
+        height: 70px;
+        font-size: 24px;
+        margin: auto;
+        border-radius: 4px;
+        background-color: var(--letter-gray);
+    }
+
+    .virtual-keyboard .letter.double {
+        width: 60px;
     }
 
 }
