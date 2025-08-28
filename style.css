@@ -63,7 +63,7 @@ a:visited {
 	cursor: pointer;
 	outline: inherit;
     justify-self: right;
-    margin-left: 70vw;
+    margin-left: auto;
 }
 
 .game {
@@ -107,6 +107,7 @@ a:visited {
     font-weight: bold;
     font-size: 36px;
     text-transform: uppercase;
+    color: light-dark(black, #d3d3d3);
 }
 
 @keyframes wrong-word {
@@ -128,10 +129,6 @@ a:visited {
     100% {translate: 0px;}
 }
 
-.letter {
-    color: light-dark(white, white);
-}
-
 .letter.wrong-word {
     animation: wrong-word 1s;
 }
@@ -145,14 +142,17 @@ a:visited {
 }
 
 .letter.correct {
+    color: white;
     background-color: var(--letter-green);
 }
 
 .letter.misplaced {
+    color: white;
     background-color: var(--letter-yellow);
 }
 
 .letter.wrong {
+    color: white;
     background-color: var(--letter-gray);
 }
 
