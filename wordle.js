@@ -2,6 +2,7 @@ const PARENT = document.querySelector(".game");
 let CURRENT = document.querySelector(".current");
 let ANSWER = "";
 let PREV = [];
+let DARK = false;
 
 async function getAnswer() {
 	const promise = await fetch("https://words.dev-apis.com/word-of-the-day");
@@ -119,7 +120,37 @@ function handleInput(event) {
 	}
 }
 
+function getMode() {
+	let darkIcon = document.querySelector(".dark-icon");
+	let lightIcon = document.querySelector(".dark-icon");
+
+	if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+		darkIcon.classList.remove("hidden");
+		lightIcon.classList.add("hidden");
+		DARK = true;
+	}
+}
+
+function switchMode() {
+	if (DARK) {
+		document.querySelector("#dark").checked = false;
+		document.querySelector("#light").checked = true;
+		document.querySelector(".light-icon").classList.add("hidden");
+		document.querySelector(".dark-icon").classList.remove("hidden");
+		DARK = false;
+	} else {
+		document.querySelector("#light").checked = false;
+		document.querySelector("#dark").checked = true;
+		DARK = true;
+		document.querySelector(".dark-icon").classList.add("hidden");
+		document.querySelector(".light-icon").classList.remove("hidden");
+	}
+}
+
 async function main() {
+	getMode();
+	document.querySelector(".switch-modes").addEventListener("click", switchMode);
+
 	await getAnswer();
 
 	document.querySelector("body").addEventListener("keydown", handleInput);

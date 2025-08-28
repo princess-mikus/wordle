@@ -48,8 +48,8 @@ a:visited {
     display: none;
 }
 
-.dark-icon {
-    display: none;
+.light-icon {
+    fill: white;
 }
 
 .switch-modes {
@@ -206,6 +206,10 @@ a:visited {
 
 .disclaimer span {
     font-size: 9px;
+}
+
+.hidden {
+    display: none;
 }
 
 @media(max-width:800px) {
