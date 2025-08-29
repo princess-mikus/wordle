@@ -251,15 +251,16 @@ a:visited {
         padding: 10px 30px;
         justify-items: center;
         justify-content: center;
-        width: 100%;
+        width: 80%;
         margin: auto;
     }
 
     .virtual-keyboard-row {
-        width: 60%;
         padding: auto;
         margin: auto;
         display: flex;
+        gap: 8px;
+        justify-content: space-between;
     }
 
     .virtual-keyboard .letter {
