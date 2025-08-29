@@ -79,8 +79,6 @@ async function checkWord(word) {
 	let correct = true;
 	for (let i = 0; i < word.length; i++) {	
 		let virtualKey = document.querySelector("#" + word[i].toUpperCase());
-		console.log("#" + word[i]);
-		console.log(virtualKey);
 		CURRENT.children[i + 1].classList.add("flip");
 		if (word[i] === ANSWER[i]) {
 			CURRENT.children[i + 1].classList.add("correct");
@@ -156,18 +154,13 @@ function switchMode() {
 }
 
 function handleVirtualInput(ths) {
-	let	key = ths.target.innerText;
-
-	if (key === "↵") {
-		key = "Enter";
-	} else if (key === "⌫") {
-		key = "Backspace";
-	}
+	let	key = ths.target.id;
 
 	const options = {
 		key: key,
 		code: Number(key)
 	}
+
 	let event = new KeyboardEvent("keydown", options);
 	handleInput(event);
 }
