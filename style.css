@@ -6,6 +6,7 @@
     --letter-green:   #6ca965;
     --letter-yellow:  #c8b653;
     --letter-gray:    light-dark(#787c7f, #3a3a3c);
+    --letter-gray-inverted:    light-dark(#3a3a3c, #787c7f);
 }
 
 html {
@@ -68,7 +69,7 @@ a:visited {
 
 .game {
     display: flex;
-    flex-direction: column;
+    flex-flow: column nowrap;
     gap: 20px;
     height: fit-content;
     min-height: 60vh;
@@ -162,6 +163,8 @@ a:visited {
     width: 36px;
     font-size: 24px;
     margin-left: 2px;
+    text-align: center;
+    padding: 2px;
 }
 
 
@@ -257,16 +260,28 @@ a:visited {
     }
 
     .virtual-keyboard .letter {
-        width: 40px;
-        height: 70px;
-        font-size: 24px;
+        width: 30px;
+        height: 50px;
+        font-size: 20px;
         margin: auto;
         border-radius: 4px;
-        background-color: var(--letter-gray);
+        background-color: var(--letter-gray-inverted);
+        color: white;
     }
 
     .virtual-keyboard .letter.double {
         width: 60px;
     }
-
+    
+    .virtual-keyboard .letter.wrong {
+        background-color: var(--letter-gray);
+    }
+    
+    .virtual-keyboard .letter.misplaced {
+        background-color: var(--letter-yellow);
+    }
+    
+    .virtual-keyboard .letter.correct {
+        background-color: var(--letter-green);
+    }
 }

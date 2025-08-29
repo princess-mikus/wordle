@@ -78,15 +78,23 @@ async function checkWord(word) {
 
 	let correct = true;
 	for (let i = 0; i < word.length; i++) {	
+		let virtualKey = document.querySelector("#" + word[i].toUpperCase());
+		console.log("#" + word[i]);
+		console.log(virtualKey);
 		CURRENT.children[i + 1].classList.add("flip");
-		if (word[i] === ANSWER[i])
+		if (word[i] === ANSWER[i]) {
 			CURRENT.children[i + 1].classList.add("correct");
+			virtualKey.classList.add("correct");
+		}
 		else {
 			correct = false;
-			if (!checkIfMisplaced(word[i]))
+			if (!checkIfMisplaced(word[i])) {
 				CURRENT.children[i + 1].classList.add("wrong");
-			else
+				virtualKey.classList.add("wrong");
+			} else {
 				CURRENT.children[i + 1].classList.add("misplaced");
+				virtualKey.classList.add("misplaced");
+			}
 		}
 	}
 
