@@ -40,8 +40,6 @@ function checkIfMisplaced(letter, word, position) {
 
 	answerArray.forEach((element) => letters += (element === letter));
 
-	console.log(letters);
-
 	for (i = 0; i < position; i++) {
 		letters -= (word[i] === letter);
 	}
@@ -60,7 +58,6 @@ function updateCurrent() {
 	} else {
 		PARENT.children[nextChild].classList.add("current");
 		CURRENT = document.querySelector(".current");
-		console.log(CURRENT);
 	}
 };
 
@@ -107,7 +104,7 @@ async function checkWord(word) {
 	}
 
 	if (correct === true) {
-		console.log("You won!!!");
+		window.alert("You won!!!");
 	} else {
 		PREV.push(word);
 		updateCurrent();
