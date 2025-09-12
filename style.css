@@ -301,7 +301,7 @@ a:visited {
 
     .virtual-keyboard .letter.double {
         min-width: 60px;
-        font-size: 24px;
+        font-size: 36px;
         text-align: center;
         padding: auto;
     }
