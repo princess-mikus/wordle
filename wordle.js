@@ -96,7 +96,7 @@ async function checkWord(word) {
 		}
 		else {
 			correct = false;
-			if (!checkIfMisplaced(word[i], word, i))
+			if (!checkIfMisplaced(word[i], word, i)) {
 				CURRENT.children[i + 1].classList.add("wrong");
 				virtualKey.classList.add("wrong");
 			} else {
