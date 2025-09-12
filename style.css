@@ -66,6 +66,32 @@ a:visited {
     margin-left: auto;
 }
 
+.blur-bg {
+    backdrop-filter: blur(5px);
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1;
+}
+
+.win-screen {
+    position: absolute;
+    top: 25%;
+    left: 15%;
+    bottom: 25%;
+    width: 70vw;
+    height: 50vh;
+    background-color: light-dark(#787c7f, #3a3a3c);
+    z-index: 2;
+    border-radius: 20px;
+    border: 2px solid black;
+    text-align: center;
+}
+
+.text-title {
+    font-size: 4em;
+}
+
 .game {
     display: flex;
     flex-direction: column;
@@ -96,8 +122,6 @@ a:visited {
     margin-left: 10px;
     margin-right: 10px;
 }
-
-/* TODO: make it mobile friendly */
 
 .letter {
     border: lightgray solid 1px;

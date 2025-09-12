@@ -31,13 +31,23 @@ async function getCorrectWord(word) {
 	return (promise.json());
 }
 
-function checkIfMisplaced(letter) {
+function checkIfMisplaced(letter, word, position) {
 	const answerArray = Array.from(ANSWER);
 	if (!answerArray.find((element) => element === letter))
 		return (false);
 
-	// TODO check if letter is already right
+	let letters = 0;
 
+	answerArray.forEach((element) => letters += (element === letter));
+
+	console.log(letters);
+
+	for (i = 0; i < position; i++) {
+		letters -= (word[i] === letter);
+	}
+
+	if (letters <= 0)
+		return (false);
 	return (true);
 }
 
@@ -83,7 +93,7 @@ async function checkWord(word) {
 			CURRENT.children[i + 1].classList.add("correct");
 		else {
 			correct = false;
-			if (!checkIfMisplaced(word[i]))
+			if (!checkIfMisplaced(word[i], word, i))
 				CURRENT.children[i + 1].classList.add("wrong");
 			else
 				CURRENT.children[i + 1].classList.add("misplaced");
@@ -91,8 +101,7 @@ async function checkWord(word) {
 	}
 
 	if (correct === true) {
-		alert("You won!!!");
-		// TODO: do a win indicator!!!
+		console.log("You won!!!");
 	} else {
 		PREV.push(word);
 		updateCurrent();
