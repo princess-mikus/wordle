@@ -290,9 +290,9 @@ a:visited {
     }
 
     .virtual-keyboard .letter {
-        width: 24px;
-        height: 40px;
-        font-size: 14px;
+        width: 8vw;
+        height: 7vh;
+        font-size: 24px;
         margin: auto;
         border-radius: 4px;
         background-color: var(--letter-gray-inverted);
@@ -300,7 +300,7 @@ a:visited {
     }
 
     .virtual-keyboard .letter.double {
-        width: 50px;
+        min-width: 60px;
         font-size: 24px;
         text-align: center;
         padding: auto;
@@ -318,23 +318,4 @@ a:visited {
         background-color: var(--letter-green);
     }
 
-}
-
-@media(max-width:600px) {
-    .virtual-keyboard .letter {
-        width: 20px;
-        height: 32px;
-        font-size: 12px;
-        margin: auto;
-        border-radius: 4px;
-        background-color: var(--letter-gray-inverted);
-        color: white;
-    }
-
-    .virtual-keyboard .letter.double {
-        width: 60px;
-        font-size: 12px;
-        text-align: center;
-        padding: auto;
-    }
 }
