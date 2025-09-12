@@ -3,9 +3,11 @@
 }
 
 :root {
+    --section-border: ligth-dark(black, ivory);
     --letter-green:   #6ca965;
     --letter-yellow:  #c8b653;
     --letter-gray:    light-dark(#787c7f, #3a3a3c);
+    --letter-gray-inverted:    light-dark(#3a3a3c, #787c7f);
 }
 
 html {
@@ -41,7 +43,7 @@ a:visited {
     align-items: center;
     margin-bottom: 30px;
     padding-bottom: 10px;
-    border-bottom: 0.5px solid black;
+    border-bottom: 0.5px solid var(--section-border);
 }
 
 #mode-switcher {
@@ -94,7 +96,7 @@ a:visited {
 
 .game {
     display: flex;
-    flex-direction: column;
+    flex-flow: column nowrap;
     gap: 20px;
     height: fit-content;
     min-height: 60vh;
@@ -186,6 +188,8 @@ a:visited {
     width: 36px;
     font-size: 24px;
     margin-left: 2px;
+    text-align: center;
+    padding: 2px;
 }
 
 
@@ -276,21 +280,59 @@ a:visited {
     }
 
     .virtual-keyboard-row {
+        padding: auto;
+        margin: auto;
         display: flex;
-        gap: 10px;
+        gap: 8px;
+        justify-content: space-between;
     }
 
     .virtual-keyboard .letter {
-        width: 40px;
-        height: 70px;
-        font-size: 24px;
+        width: 24px;
+        height: 40px;
+        font-size: 14px;
         margin: auto;
         border-radius: 4px;
-        background-color: var(--letter-gray);
+        background-color: var(--letter-gray-inverted);
+        color: white;
     }
 
     .virtual-keyboard .letter.double {
-        width: 60px;
+        width: 50px;
+        font-size: 24px;
+        text-align: center;
+        padding: auto;
+    }
+    
+    .virtual-keyboard .letter.wrong {
+        background-color: var(--letter-gray);
+    }
+    
+    .virtual-keyboard .letter.misplaced {
+        background-color: var(--letter-yellow);
+    }
+    
+    .virtual-keyboard .letter.correct {
+        background-color: var(--letter-green);
     }
 
+}
+
+@media(max-width:600px) {
+    .virtual-keyboard .letter {
+        width: 20px;
+        height: 32px;
+        font-size: 12px;
+        margin: auto;
+        border-radius: 4px;
+        background-color: var(--letter-gray-inverted);
+        color: white;
+    }
+
+    .virtual-keyboard .letter.double {
+        width: 30px;
+        font-size: 12px;
+        text-align: center;
+        padding: auto;
+    }
 }

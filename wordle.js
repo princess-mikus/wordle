@@ -88,15 +88,21 @@ async function checkWord(word) {
 
 	let correct = true;
 	for (let i = 0; i < word.length; i++) {	
+		let virtualKey = document.querySelector("#" + word[i].toUpperCase());
 		CURRENT.children[i + 1].classList.add("flip");
-		if (word[i] === ANSWER[i])
+		if (word[i] === ANSWER[i]) {
 			CURRENT.children[i + 1].classList.add("correct");
+			virtualKey.classList.add("correct");
+		}
 		else {
 			correct = false;
 			if (!checkIfMisplaced(word[i], word, i))
 				CURRENT.children[i + 1].classList.add("wrong");
-			else
+				virtualKey.classList.add("wrong");
+			} else {
 				CURRENT.children[i + 1].classList.add("misplaced");
+				virtualKey.classList.add("misplaced");
+			}
 		}
 	}
 
@@ -157,18 +163,13 @@ function switchMode() {
 }
 
 function handleVirtualInput(ths) {
-	let	key = ths.target.innerText;
-
-	if (key === "↵") {
-		key = "Enter";
-	} else if (key === "⌫") {
-		key = "Backspace";
-	}
+	let	key = ths.target.id;
 
 	const options = {
 		key: key,
 		code: Number(key)
 	}
+
 	let event = new KeyboardEvent("keydown", options);
 	handleInput(event);
 }
